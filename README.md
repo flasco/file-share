@@ -14,14 +14,14 @@ a webApp powered by react &amp; dva &amp; antd
 - [ ] 
 - [ ] 
 
-## 项目依赖
+## dependencies
 ```bash
 node 7.6+
 ```
 
-## 项目的开发流程
+## project development process
 下载好本项目之后需要执行下面的命令
 ```bash
 yarn install # 安装项目依赖
-yarn felint-init # 初始化项目的代码风格统一钩子
+yarn felint-init # 初始化felint，统一代码风格
 ```

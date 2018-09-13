@@ -16,7 +16,8 @@
     "build": "react-app-rewired build",
     "test": "react-app-rewired test --env=jsdom",
     "eject": "react-scripts eject",
-    "felint-init": "npx felint init"
+    "felint-init": "npx felint init",
+    "felint-hooks": "npx felint hooks"
   },
   "devDependencies": {
     "babel-plugin-import": "1.8.0",

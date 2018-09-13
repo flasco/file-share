@@ -27,6 +27,7 @@ module.exports = function override(config, env) {
         'axios'
       ]
     },
+    path: './static/js',
     filename: '[name].dll.js'
   })(config, env);
 

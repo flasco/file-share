@@ -23,5 +23,5 @@ node 7.6+
 下载好本项目之后需要执行下面的命令
 ```bash
 yarn install # 安装项目依赖
-yarn felint-init # 初始化felint，统一代码风格
+yarn felint-init # 初始化felint，统一代码风格，注意 - 只能在*nix下面生效，windows下面不起作用
 ```

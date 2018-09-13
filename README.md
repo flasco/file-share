@@ -1,6 +1,9 @@
 # file-share
 a webApp powered by react &amp; dva &amp; antd
 
+## init-version
+最开始的初始化项目在branch: `init-version`中，构建项目可以直接clone该分支然后修改remote origin
+
 ## todoList
 - [x] 搭建好项目的结构
 - [ ] 明确项目的pages

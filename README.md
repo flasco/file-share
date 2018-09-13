@@ -5,14 +5,14 @@ a webApp powered by react &amp; dva &amp; antd
 最开始的初始化项目在branch: `init-version`中，构建项目可以直接clone该分支然后修改remote origin
 
 ## todoList
-- [x] 搭建好项目的结构
-- [ ] 明确项目的pages
-- [ ] 完善首页
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
+[x] 搭建好项目的结构
+[ ] 明确项目的pages
+[ ] 完善首页
+[ ] 
+[ ] 
+[ ] 
+[ ] 
+[ ] 
 
 ## dependencies
 ```bash

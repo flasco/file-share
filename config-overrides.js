@@ -18,18 +18,20 @@ module.exports = function override(config, env) {
     javascriptEnabled: true,
   })(config, env);
 
-  config = createRewireDll({
-    entry: {
-      vendor: [
-        'react',
-        'react-dom',
-        'dva',
-        'axios'
-      ]
-    },
-    path: './static/js',
-    filename: '[name].dll.js'
-  })(config, env);
+  if (env !== 'development') {
+    config = createRewireDll({
+      entry: {
+        vendor: [
+          'react',
+          'react-dom',
+          'dva',
+          'axios'
+        ]
+      },
+      path: './static/js',
+      filename: '[name].dll.js'
+    })(config, env);
+  }
 
   config.resolve = {
     alias: {

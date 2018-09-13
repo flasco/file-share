@@ -9,7 +9,9 @@ class MainLayout extends React.Component {
     return (
       <Layout className="layout">
         <Header>
-          <div className="logo" />
+          <div className="logo">
+            <span>File Share</span>
+          </div>
         </Header>
         <Content style={{ padding: '0 50px', minHeight: '400px' }}>
           {this.props.children}

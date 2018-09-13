@@ -1,7 +1,9 @@
 .logo {
-  width: 120px;
-  height: 31px;
-  background: #fff;
-  margin: 16px 28px 16px 0;
   float: left;
+  text-align: center;
+  span {
+    line-height: 32px;
+    font-size: 18px;
+    color: #fff;
+  }
 }

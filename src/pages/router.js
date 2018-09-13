@@ -7,13 +7,13 @@ const menuGlobal = [
   {
     path: '/',
     models: () => [import('../models/user')], // models可多个
-    component: () => import('./Home'),
+    component: () => import('./home'),
   },
-  {
-    path: '/test',
-    // models: () => [import('./models/aaa')], // models可多个
-    component: () => import('./Home'),
-  },
+  // {
+  //   path: '/test',
+  //   // models: () => [import('./models/aaa')], // models可多个
+  //   component: () => import('./home'),
+  // },
 ];
 
 function RouterConfig({ history, app }) {

@@ -15,10 +15,10 @@ class MainLayout extends React.Component {
           {this.props.children}
         </Content>
         <Footer style={{ textAlign: 'center' }}>
-          Ant Design ©2018 Created by Ant UED
+          Ant Design ©2018 Created by flasco
         </Footer>
       </Layout>
-    )
+    );
   }
 }
 

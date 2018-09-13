@@ -6,18 +6,17 @@ import dynamic from 'dva/dynamic';
 const menuGlobal = [
   {
     path: '/',
-    models: () => [import('../models/user')], //models可多个
+    models: () => [import('../models/user')], // models可多个
     component: () => import('./Home'),
   },
   {
     path: '/test',
-    // models: () => [import('./models/aaa')], //models可多个
+    // models: () => [import('./models/aaa')], // models可多个
     component: () => import('./Home'),
   },
 ];
 
 function RouterConfig({ history, app }) {
-
   return (
     <Router history={history}>
       <Switch>
@@ -38,6 +37,5 @@ function RouterConfig({ history, app }) {
     </Router>
   );
 }
-
 
 export default RouterConfig;

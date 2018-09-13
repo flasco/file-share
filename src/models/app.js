@@ -13,18 +13,16 @@ export default {
       return {
         ...state,
         ...payload
-      }
+      };
     },
   },
 
   effects: {
-    
+
   },
 
-  
-
   subscriptions: {
-    
+
   },
 
 };

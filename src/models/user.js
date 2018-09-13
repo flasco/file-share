@@ -13,8 +13,8 @@ export default {
     },
   },
   effects: {
-    *fetch(action, { put, call }) {
+    * fetch(action, { put }) {
       yield put({ type: 'save', data: [1, 2, 3] });
     },
   },
-}
+};

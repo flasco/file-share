@@ -22,11 +22,9 @@ class Home extends React.Component {
   }
 }
 
-
-
 function select(state) {
   console.log(state);
-  return {}
+  return {};
 }
 
 export default connect(select)(Home);

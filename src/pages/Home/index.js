@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import { Link } from 'dva/router';
 import { Button } from 'antd';
 
-import MainLayout from '../../components/main-layout';
+import MainLayout from 'components/main-layout';
 
 class Home extends React.Component {
   test = () => {

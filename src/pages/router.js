@@ -2,6 +2,7 @@ import React from 'react';
 import { Router, Route, Switch } from 'dva/router';
 import dynamic from 'dva/dynamic';
 
+// 使用按需加载会导致css不会生成，被装在chunk.js里面
 const menuGlobal = [
   {
     path: '/',

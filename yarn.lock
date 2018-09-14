@@ -3003,10 +3003,6 @@ eslint-config-react-app@^2.1.0:
   version "2.1.0"
   resolved "http://registry.npm.taobao.org/eslint-config-react-app/download/eslint-config-react-app-2.1.0.tgz#23c909f71cbaff76b945b831d2d814b8bde169eb"
 
-eslint-config-vue@2.0.2:
-  version "2.0.2"
-  resolved "http://registry.npm.taobao.org/eslint-config-vue/download/eslint-config-vue-2.0.2.tgz#a3ab1004899e49327a94c63e24d47a396b2f4848"
-
 eslint-import-resolver-node@^0.2.0:
   version "0.2.3"
   resolved "http://registry.npm.taobao.org/eslint-import-resolver-node/download/eslint-import-resolver-node-0.2.3.tgz#5add8106e8c928db2cba232bcd9efa846e3da16c"
@@ -3044,12 +3040,6 @@ eslint-plugin-flowtype@2.39.1:
   resolved "http://registry.npm.taobao.org/eslint-plugin-flowtype/download/eslint-plugin-flowtype-2.39.1.tgz#b5624622a0388bcd969f4351131232dcb9649cd5"
   dependencies:
     lodash "^4.15.0"
-
-eslint-plugin-html@^2.0.0:
-  version "2.0.3"
-  resolved "http://registry.npm.taobao.org/eslint-plugin-html/download/eslint-plugin-html-2.0.3.tgz#7c89883ab0c85fa5d28b666a14a4e906aa90b897"
-  dependencies:
-    htmlparser2 "^3.8.2"
 
 eslint-plugin-import@2.2.0:
   version "2.2.0"
@@ -3108,7 +3098,7 @@ eslint-plugin-lean-imports@0.3.3:
   version "0.3.3"
   resolved "http://registry.npm.taobao.org/eslint-plugin-lean-imports/download/eslint-plugin-lean-imports-0.3.3.tgz#acb835d23801d92d2ce119b752b97c953f96d865"
 
-eslint-plugin-react@6.10.3, eslint-plugin-react@^6.9.0:
+eslint-plugin-react@6.10.3:
   version "6.10.3"
   resolved "http://registry.npm.taobao.org/eslint-plugin-react/download/eslint-plugin-react-6.10.3.tgz#c5435beb06774e12c7db2f6abaddcbf900cd3f78"
   dependencies:
@@ -3126,13 +3116,6 @@ eslint-plugin-react@7.4.0:
     has "^1.0.1"
     jsx-ast-utils "^2.0.0"
     prop-types "^15.5.10"
-
-eslint-plugin-vue@2.0.1:
-  version "2.0.1"
-  resolved "http://registry.npm.taobao.org/eslint-plugin-vue/download/eslint-plugin-vue-2.0.1.tgz#814aa24b5a892d1a95a9d65d980a11202e597e3b"
-  dependencies:
-    eslint-plugin-html "^2.0.0"
-    eslint-plugin-react "^6.9.0"
 
 eslint-restricted-globals@^0.1.1:
   version "0.1.1"
@@ -4210,7 +4193,7 @@ html-webpack-plugin@2.29.0:
     pretty-error "^2.0.2"
     toposort "^1.0.0"
 
-htmlparser2@^3.8.2, htmlparser2@^3.9.1:
+htmlparser2@^3.9.1:
   version "3.9.2"
   resolved "http://registry.npm.taobao.org/htmlparser2/download/htmlparser2-3.9.2.tgz#1bdf87acca0f3f9e53fa4fcceb0f4b4cbb00b338"
   dependencies:

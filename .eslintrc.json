@@ -24,6 +24,7 @@
         "no-tabs": 0,
         "comma-dangle": 0,
         "func-names": 0,
+        "linebreak-style": [0 ,"error", "windows"],
         "prefer-const": 0,
         "arrow-body-style": 0,
         "operator-assignment": 0,

@@ -20,6 +20,7 @@
     "felint-hooks": "npx felint hooks"
   },
   "devDependencies": {
+    "babel-eslint": "7.2.1",
     "babel-plugin-import": "1.8.0",
     "eslint": "3.19.0",
     "eslint-config-airbnb": "14.1.0",
@@ -27,6 +28,7 @@
     "eslint-plugin-import": "2.2.0",
     "eslint-plugin-jsx-a11y": "4.0.0",
     "eslint-plugin-lean-imports": "0.3.3",
+    "eslint-plugin-react": "6.10.3",
     "eslint-plugin-vue": "2.0.1",
     "felint": "1.0.6",
     "react-app-rewire-dll": "1.0.2",

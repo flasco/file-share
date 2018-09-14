@@ -23,5 +23,9 @@ node 7.6+
 下载好本项目之后需要执行下面的命令
 ```bash
 yarn install # 安装项目依赖
-yarn felint-init # 初始化felint，统一代码风格，注意 - 只能在*nix下面生效，windows下面不起作用
+```
+值得一提的是如果想强行通过husky的commit检测的话，在commit参数之后加一个 -n就可以强行提交了
+
+```bash
+git commit -m "test" -n # just like this
 ```

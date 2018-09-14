@@ -29,3 +29,15 @@ yarn install # 安装项目依赖
 ```bash
 git commit -m "test" -n # just like this
 ```
+
+## commit rules
+
+* feat: 新功能(feature)
+* fix：bug修复
+* merge: 合并分支
+* docs：文档修改
+* style：缩进，空格，换行，大小写等调整（不影响代码运行的变动）
+* refactor：代码重构（代码结构调整，不影响功能）
+* perf：性能优化（improve performance）
+* test：增加测试
+* chore：系统构建，打包

@@ -1,0 +1,21 @@
+.logo {
+  float: left;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+// 屏蔽用户的拖拉选择
+.main-layout-header {
+  // border-bottom: 1px solid #ebebeb;
+  -moz-user-select: none;
+  -o-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+body {
+  background: #f0f2f5 !important;
+}

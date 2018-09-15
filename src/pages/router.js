@@ -6,14 +6,14 @@ import dynamic from 'dva/dynamic';
 const menuGlobal = [
   {
     path: '/',
-    models: () => [import('../models/user')], // models可多个
+    models: () => [import('../models/user'), import('../models/router')], // models可多个
     component: () => import('./home'),
   },
-  // {
-  //   path: '/test',
-  //   // models: () => [import('./models/aaa')], // models可多个
-  //   component: () => import('./home'),
-  // },
+  {
+    path: '/search',
+    models: () => [import('../models/router'), import('../models/user')], // models可多个
+    component: () => import('./search'),
+  },
 ];
 
 function RouterConfig({ history, app }) {

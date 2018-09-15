@@ -69,7 +69,6 @@ class UserBoard extends React.Component {
     });
   }
 
-
   renderLogin = () => {
     return (
       <React.Fragment>

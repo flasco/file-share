@@ -1,0 +1,12 @@
+.user-board-container {
+  display: flex;
+  color: #fff;
+  float: right;
+
+  li {
+    list-style-type: none;
+    width: 60px;
+    cursor: pointer;
+    text-align: center;
+  }
+}

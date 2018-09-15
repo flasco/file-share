@@ -1,9 +1,12 @@
 // import { sleep } from 'utils';
+import akari from '../assets/akari.jpg';
 
 export default {
   namespace: 'user',
   state: {
-    isLogin: false,
+    isLogin: true,
+    avatar: akari,
+    accountName: '执墨'
   },
   reducers: {
     updateState(state, action) {

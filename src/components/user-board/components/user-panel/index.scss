@@ -1,0 +1,106 @@
+.userboard-container {
+  position: relative;
+  left: 0;
+  top: 64px;
+  width: 306px;
+  z-index: 1000;
+}
+
+.userboard-container-inner {
+  position: absolute;
+  width: 306px;
+  height: 208px;
+  background-color: #fff;
+  padding: 24px;
+  box-sizing: border-box;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  box-shadow: 0 8px 16px 0 rgba(7, 17, 27, .2);
+}
+
+.userboard-header {
+  float: left;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  margin-right: 12px;
+}
+
+.userboard-name {
+  display: inline-block;
+  font-size: 14px;
+  color: #07111b;
+}
+
+.userboard-meta {
+  font-size: 12px;
+}
+
+.userboard-meta a {
+  font-size: 12px !important;
+  color: #93999f;
+  margin-right: 12px;
+}
+
+.userboard-items {
+  clear: both;
+  list-style: none;
+  line-height: normal;
+}
+
+.userboard-first-right::after {
+  clear: both;
+}
+
+.userboard-items {
+  padding: 0;
+  padding-top: 16px;
+}
+
+.userboard-items li {
+  position: relative;
+  width: 128px;
+  height: 36px;
+  background-color: #f8fafc;
+  border-radius: 2px;
+  line-height: 36px;
+  color: #4d555d;
+  font-size: 12px;
+  margin-right: 1px;
+  float: left;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 400ms;
+}
+
+.userboard-items li:hover {
+  background-color: #d9dde1;
+}
+
+.userboard-items li a {
+  color: #777c82 !important;
+  width: 100%;
+  height: 100%;
+  display: inline-table;
+  text-decoration: none;
+}
+
+.userboard-items li a:hover {
+  color: #4d555d !important;
+}
+
+.userboard-quit {
+  margin-top: 16px;
+  line-height: normal;
+  cursor: pointer;
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  font-size: 12px !important;
+  color: #93999f;
+  transition: color 400ms;
+}
+
+.userboard-quit:hover {
+  color: #4d555d;
+}

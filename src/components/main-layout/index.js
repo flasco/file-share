@@ -1,5 +1,6 @@
 import React from 'react';
 import { Layout } from 'antd';
+import assets from 'assets';
 
 import UserBoard from '../user-board';
 
@@ -10,13 +11,15 @@ const { Header, Content, Footer } = Layout;
 class MainLayout extends React.Component {
   constructor(props) {
     super(props);
-    this.minHeight = document.body.clientHeight - 134;
+    const tempHeight = document.body.clientHeight - 134;
+    this.minHeight = tempHeight < 538 ? 538 : tempHeight;
   }
   render() {
     return (
       <Layout className="layout">
-        <Header>
+        <Header className={'main-layout-header'}>
           <div className="logo">
+            <img src={assets.logo2} alt={'file share'} style={{ height: 40, marginRight: 8 }} />
             <span>File Share</span>
           </div>
           <UserBoard />

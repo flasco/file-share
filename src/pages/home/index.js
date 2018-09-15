@@ -1,6 +1,6 @@
 import React from 'react';
-import { connect } from 'dva';
 import { Input, Button } from 'antd';
+import assets from 'assets';
 
 import MainLayout from 'components/main-layout';
 
@@ -17,6 +17,9 @@ class Home extends React.Component {
   render() {
     return (
       <MainLayout>
+        <div className={'logo-container'}>
+          <img src={assets.logo} alt={'logo'} />
+        </div>
         <div className={'home-search-container'}>
           <div>
             <Input
@@ -35,9 +38,4 @@ class Home extends React.Component {
   }
 }
 
-function select(state) {
-  console.log(state);
-  return {};
-}
-
-export default connect(select)(Home);
+export default Home;

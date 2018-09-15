@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'dva';
+import { Avatar } from 'antd';
 
 import LoginPopup from 'components/login-popup';
+import UserPanel from './components/user-panel';
 import { sleep } from 'utils';
 
 import './index.scss';
@@ -9,7 +11,8 @@ import './index.scss';
 class UserBoard extends React.Component {
   state = {
     visible: false,
-    type: 'login' // 1 - 登录, 2 - 注册
+    panelShow: false,
+    type: 'login' // login - 登录，register - 注册
   }
   login = () => {
     this.setState({
@@ -77,9 +80,39 @@ class UserBoard extends React.Component {
     );
   }
 
+  onMouseEnter = () => {
+    this.setState({
+      panelShow: true
+    });
+  }
+
+  onMouseLeave = () => {
+    this.setState({
+      panelShow: false
+    });
+  }
+
   renderUser = () => {
     return (
-      <div className={'user-board-container'}>登录成功啦~</div>
+      <div style={{ position: 'relative', height: '100%', float: 'right' }}>
+        <div
+          className={'user-board-container'}
+          onMouseEnter={this.onMouseEnter}
+          onMouseLeave={this.onMouseLeave}>
+          <Avatar
+            icon="user"
+            size="large"
+            src={this.props.avatar} />
+        </div>
+        <UserPanel
+          accountName={this.props.accountName}
+          avatar={this.props.avatar}
+          needShow={this.state.panelShow}
+          onMouseEnter={this.onMouseEnter}
+          onMouseLeave={this.onMouseLeave} />
+
+      </div>
+
     );
   }
 
@@ -89,9 +122,12 @@ class UserBoard extends React.Component {
     );
   }
 }
+
 function select(state) {
   return {
     isLogin: state.user.isLogin,
+    avatar: state.user.avatar,
+    accountName: state.user.accountName
     // registerLoading: state.loading.effects['user/register'],
   };
 }

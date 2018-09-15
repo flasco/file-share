@@ -13,7 +13,7 @@
     "react-router-dom": "4.3.1"
   },
   "scripts": {
-    "init": "yarn install --registry=http://registry.npm.taobao.org",
+    "init-dep": "yarn install --registry=http://registry.npm.taobao.org",
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test --env=jsdom",

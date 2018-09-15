@@ -6,12 +6,13 @@ a webApp powered by react &amp; dva &amp; antd
 
 ## todoList
 - [x] 搭建好项目的结构
-- [ ] 明确项目的pages
-- [ ] 完善首页
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
+- [x] 明确项目的pages
+- [x] 完善用户面板
+- [x] 完善首页
+- [ ] 完善搜索结果页 [doing]
+- [ ] 完善搜索结果详情页 [important]
+- [ ] 完善个人中心页
+- [ ] 完善文件管理页
 - [ ] 
 
 ## dependencies

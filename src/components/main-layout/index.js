@@ -1,6 +1,5 @@
 import React from 'react';
 import { Layout } from 'antd';
-import assets from 'assets';
 
 import UserBoard from '../user-board';
 
@@ -18,10 +17,6 @@ class MainLayout extends React.Component {
     return (
       <Layout className="layout">
         <Header className={'main-layout-header'}>
-          <div className="logo">
-            <img src={assets.logo2} alt={'file share'} style={{ height: 40, marginRight: 8 }} />
-            <span>File Share</span>
-          </div>
           <UserBoard />
         </Header>
         <Content style={{ padding: '0 50px', minHeight: `${this.minHeight}px` }}>

@@ -4,7 +4,7 @@ import './index.scss';
 
 class UserPanel extends React.Component {
   render() {
-    const { needShow, onMouseLeave, onMouseEnter, avatar, accountName } = this.props;
+    const { needShow, onMouseLeave, onMouseEnter, avatar, accountName, userQuit } = this.props;
     return (
       <div
         className="userboard-container"
@@ -26,7 +26,7 @@ class UserPanel extends React.Component {
             <li><Link key="info" to={{ pathname: '/user/info' }}>个人中心</Link></li>
             <li><Link key="file" to={{ pathname: '/user/file' }}>文件管理</Link></li>
           </ul>
-          <a className="userboard-quit" onClick={this.userQuit}>安全退出</a>
+          <a className="userboard-quit" onClick={userQuit}>安全退出</a>
         </div>
       </div>
     );

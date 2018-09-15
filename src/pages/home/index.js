@@ -1,7 +1,7 @@
 import React from 'react';
 import { Input, Button } from 'antd';
+import { connect } from 'dva';
 import assets from 'assets';
-
 import MainLayout from 'components/main-layout';
 
 import './index.scss';
@@ -11,7 +11,17 @@ class Home extends React.Component {
     input: ''
   }
   onChangeInput = (e) => {
-    this.setState({ userName: e.target.value });
+    this.setState({ input: e.target.value });
+  }
+
+  onSearch = () => {
+    const keyword = encodeURIComponent(this.state.input);
+    this.props.dispatch({
+      type: 'router/jmp',
+      payload: {
+        path: `/search?q=${keyword}`
+      }
+    });
   }
 
   render() {
@@ -27,9 +37,10 @@ class Home extends React.Component {
               size={'large'}
               className={'search-input'}
               value={this.state.input}
+              onPressEnter={this.onSearch}
               onChange={this.onChangeInput}
             />
-            <Button type="primary">搜索</Button>
+            <Button type="primary" onClick={this.onSearch}>搜索</Button>
           </div>
         </div>
 
@@ -38,4 +49,8 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+function select() {
+  return {};
+}
+
+export default connect(select)(Home);

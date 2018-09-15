@@ -63,6 +63,13 @@ class UserBoard extends React.Component {
     return res;
   }
 
+  userQuit = () => {
+    this.props.dispatch({
+      type: 'user/logout',
+    });
+  }
+
+
   renderLogin = () => {
     return (
       <React.Fragment>
@@ -103,11 +110,13 @@ class UserBoard extends React.Component {
           <Avatar
             icon="user"
             size="large"
+            style={{ margin: '0 15px' }}
             src={this.props.avatar} />
         </div>
         <UserPanel
           accountName={this.props.accountName}
           avatar={this.props.avatar}
+          userQuit={this.userQuit}
           needShow={this.state.panelShow}
           onMouseEnter={this.onMouseEnter}
           onMouseLeave={this.onMouseLeave} />
@@ -125,6 +134,7 @@ class UserBoard extends React.Component {
 }
 
 function select(state) {
+  if (state.user == null) return {};
   return {
     isLogin: state.user.isLogin,
     avatar: state.user.avatar,

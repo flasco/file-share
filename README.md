@@ -6,7 +6,7 @@ a webApp powered by react &amp; dva &amp; antd
 
 ## todoList
 - [x] 搭建好项目的结构
-- [ ] 明确项目的pages
+- [x] 明确项目的pages
 - [x] 完善用户面板
 - [x] 完善首页
 - [ ] 完善搜索结果页 [doing]

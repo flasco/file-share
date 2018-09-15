@@ -79,7 +79,7 @@ class UserBoard extends React.Component {
 
   renderUser = () => {
     return (
-      <div>登录成功啦~</div>
+      <div className={'user-board-container'}>登录成功啦~</div>
     );
   }
 

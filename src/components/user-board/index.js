@@ -2,9 +2,10 @@ import React from 'react';
 import { connect } from 'dva';
 import { Avatar } from 'antd';
 
-import LoginPopup from 'components/login-popup';
-import UserPanel from './components/user-panel';
 import { sleep } from 'utils';
+
+import LoginPopup from './components/login-popup';
+import UserPanel from './components/user-panel';
 
 import './index.scss';
 

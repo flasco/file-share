@@ -14,7 +14,7 @@ module.exports = function override(config, env) {
   config = rewireSass(config, env);
 
   config = rewireLess.withLoaderOptions({
-    modifyVars: { '@primary-color': '#1DA57A' },
+    modifyVars: { '@primary-color': '#32AFB4' },
     javascriptEnabled: true,
   })(config, env);
 
@@ -37,6 +37,8 @@ module.exports = function override(config, env) {
     alias: {
       components: path.resolve(__dirname, 'src/components'),
       utils: path.resolve(__dirname, 'src/utils'),
+      assets: path.resolve(__dirname, 'src/assets'),
+      api: path.resolve(__dirname, 'src/api'),
     }
   };
 

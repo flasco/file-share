@@ -1,20 +1,24 @@
+// import { sleep } from 'utils';
 
 export default {
   namespace: 'user',
   state: {
-    list: [],
+    isLogin: false,
   },
   reducers: {
-    save(state, action) {
+    updateState(state, action) {
       return {
         ...state,
-        list: action.data,
+        ...action.payload,
       };
     },
   },
   effects: {
-    * fetch(action, { put }) {
-      yield put({ type: 'save', data: [1, 2, 3] });
+    * login({ payload }, { put }) {
+      yield put({ type: 'updateState', payload });
+    },
+    * register({ payload }, { put }) {
+      yield put({ type: 'updateState', payload });
     },
   },
 };

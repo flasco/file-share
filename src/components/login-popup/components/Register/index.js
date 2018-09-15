@@ -4,14 +4,15 @@ import { Form, Icon, Input, Button, Checkbox } from 'antd';
 
 class RegisterForm extends React.Component {
   state = {
-    buttonLoading: false,
     confirmDirty: false,
+    btnLoading: false,
   };
+
   static getDerivedStateFromProps(nextProps) {
     if (nextProps.isError) {
       this.props.setError(false);
       return {
-        buttonLoading: false
+        btnLoading: false
       };
     }
     return null;
@@ -26,8 +27,10 @@ class RegisterForm extends React.Component {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        this.setState({ buttonLoading: true });
         this.props.submit(values);
+        this.setState({
+          btnLoading: true
+        });
       }
     });
   }
@@ -57,7 +60,7 @@ class RegisterForm extends React.Component {
         <Form.Item>
           {getFieldDecorator('accountName', {
             validateTrigger: 'onBlur',
-            rules: [{ required: true, message: 'length: [3,10],only allow a-z A-Z 0-9 _', max: 10, min: 3, pattern: /^[a-zA-Z_0-9]{3,10}$/g }],
+            rules: [{ required: true, message: 'length: [3,10], only number & english letter', max: 10, min: 3, pattern: /^[a-zA-Z_0-9]{3,10}$/g }],
           })(
             <Input prefix={<Icon type="user" style={{ fontSize: 13 }} />} placeholder="AccountName" />
           )}
@@ -111,7 +114,7 @@ class RegisterForm extends React.Component {
           )}
         </Form.Item>
         <Form.Item >
-          <Button type="primary" htmlType="submit" className="login-form-button" loading={this.state.buttonLoading}>Register</Button>
+          <Button type="primary" htmlType="submit" className="login-form-button" loading={this.state.btnLoading}>Register</Button>
         </Form.Item>
       </Form>
     );

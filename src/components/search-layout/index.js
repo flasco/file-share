@@ -4,7 +4,7 @@ import assets from 'assets';
 
 import UserBoard from '../user-board';
 
-import './index.scss';
+import styles from './index.module.scss';
 
 const { Header, Content, Footer } = Layout;
 
@@ -16,9 +16,9 @@ class SearchLayout extends React.Component {
   }
   render() {
     return (
-      <Layout className="layout">
-        <Header className={'main-layout-header'}>
-          <div className="logo">
+      <Layout>
+        <Header className={styles.layoutHeader}>
+          <div className={styles.logo}>
             <img src={assets.logo2} alt={'file share'} style={{ height: 40, marginRight: 8 }} />
             <Input.Search
               placeholder="input search text"

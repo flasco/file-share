@@ -3,7 +3,7 @@ import { Layout } from 'antd';
 
 import UserBoard from '../user-board';
 
-import './index.scss';
+import styles from './index.module.scss';
 
 const { Header, Content, Footer } = Layout;
 
@@ -15,8 +15,8 @@ class MainLayout extends React.Component {
   }
   render() {
     return (
-      <Layout className="layout">
-        <Header className={'main-layout-header'}>
+      <Layout>
+        <Header className={styles.layoutHeader}>
           <UserBoard />
         </Header>
         <Content style={{ padding: '0 50px', minHeight: `${this.minHeight}px` }}>

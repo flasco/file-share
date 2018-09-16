@@ -5604,7 +5604,7 @@ lodash.camelcase@^4.3.0:
   version "4.3.0"
   resolved "http://registry.npm.taobao.org/lodash.camelcase/download/lodash.camelcase-4.3.0.tgz#b28aa6288a2b9fc651035c7711f65ab6190331a6"
 
-lodash.clonedeep@^4.3.2, lodash.clonedeep@~4.5.0:
+lodash.clonedeep@^4.3.2, lodash.clonedeep@^4.5.0, lodash.clonedeep@~4.5.0:
   version "4.5.0"
   resolved "http://registry.npm.taobao.org/lodash.clonedeep/download/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
 
@@ -6233,7 +6233,7 @@ node-pre-gyp@^0.10.0:
     semver "^5.3.0"
     tar "^4"
 
-node-sass@^4.9.0:
+node-sass@^4.9.3:
   version "4.9.3"
   resolved "http://registry.npm.taobao.org/node-sass/download/node-sass-4.9.3.tgz#f407cf3d66f78308bb1e346b24fa428703196224"
   dependencies:
@@ -7970,6 +7970,12 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-app-rewire-css-modules@codebandits/react-app-rewire-css-modules:
+  version "1.0.0"
+  resolved "https://codeload.github.com/codebandits/react-app-rewire-css-modules/tar.gz/956a2330c2eb70cb5bc0795c0e83604e271d4a03"
+  dependencies:
+    lodash.clonedeep "^4.5.0"
+
 react-app-rewire-dll@1.0.2:
   version "1.0.2"
   resolved "http://registry.npm.taobao.org/react-app-rewire-dll/download/react-app-rewire-dll-1.0.2.tgz#19edb4b9909df0393e0870af628c3ea32b284bcf"
@@ -7985,13 +7991,6 @@ react-app-rewire-less@2.1.3:
     less "^3.0.2"
     less-loader "^4.1.0"
     npm "^6.4.1"
-
-react-app-rewire-scss@1.0.2:
-  version "1.0.2"
-  resolved "http://registry.npm.taobao.org/react-app-rewire-scss/download/react-app-rewire-scss-1.0.2.tgz#28af6da9455f061f827f5d6da529348a88276602"
-  dependencies:
-    node-sass "^4.9.0"
-    sass-loader "^7.0.3"
 
 react-app-rewired@1.6.2, react-app-rewired@^1.3.4:
   version "1.6.2"
@@ -8701,7 +8700,7 @@ sass-graph@^2.2.4:
     scss-tokenizer "^0.2.3"
     yargs "^7.0.0"
 
-sass-loader@^7.0.3:
+sass-loader@^7.1.0:
   version "7.1.0"
   resolved "http://registry.npm.taobao.org/sass-loader/download/sass-loader-7.1.0.tgz#16fd5138cb8b424bf8a759528a1972d72aad069d"
   dependencies:

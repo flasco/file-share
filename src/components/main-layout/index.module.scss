@@ -1,16 +1,5 @@
-.logo {
-  float: left;
-  display: flex;
-  align-items: center;
-
-  span {
-    font-size: 18px;
-    color: #fff;
-  }
-}
-
 // 屏蔽用户的拖拉选择
-.main-layout-header {
+.layoutHeader {
   -moz-user-select: none;
   -o-user-select: none;
   -khtml-user-select: none;

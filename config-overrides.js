@@ -1,6 +1,6 @@
 const { injectBabelPlugin } = require('react-app-rewired');
 const path = require('path');
-const rewireSass = require('react-app-rewire-scss');
+const rewireCssModules = require('react-app-rewire-css-modules');
 const rewireLess = require('react-app-rewire-less');
 const createRewireDll = require('react-app-rewire-dll');
 
@@ -11,7 +11,8 @@ module.exports = function override(config, env) {
     config,
   );
 
-  config = rewireSass(config, env);
+  // 支持scss的css modules
+  config = rewireCssModules(config, env);
 
   config = rewireLess.withLoaderOptions({
     modifyVars: { '@primary-color': '#32AFB4' },

@@ -1,0 +1,49 @@
+.timeTaking {
+  line-height: 42px;
+  margin-bottom: 0;
+}
+
+.searchList {
+  width: 600px;
+
+  &_item {
+    margin-top: 0;
+    margin-bottom: 26px;
+
+    cite {
+      font-style: normal;
+    }
+
+    .title {
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      text-decoration-color: #32afb4;
+      margin-bottom: 0;
+    }
+
+    .title a:hover {
+      text-decoration: underline;
+    }
+
+    .desc {
+      line-height: 1.54;
+      color: #545454;
+      word-wrap: break-word;
+      margin-bottom: 0;
+      text-align: justify;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      /* autoprefixer: off */
+      -webkit-box-orient: vertical;
+      /* autoprefixer: on */
+
+      &_time {
+        color: #808080;
+      }
+    }
+  }
+}

@@ -1,19 +1,56 @@
 import React from 'react';
+import { Link } from 'dva/router';
 
 import SearchLayout from 'components/search-layout';
-import { getUrlQuery } from 'utils';
+import { getUrlQuery, getSearchDate } from 'utils';
+
+import styles from './index.module.scss';
 
 class Search extends React.Component {
   constructor(props) {
     super(props);
-    const keyword = getUrlQuery('q');
-    console.log(keyword);
+    this.keyword = getUrlQuery('q');
   }
 
   render() {
+    // title 经测试 google的省略号是通过后台传递数据裁剪的，
+    // 而不是css生成的样式
+    const searchResult = [{
+      title: '这是一个测试的数据',
+      description: '测试'.repeat(6),
+      time: new Date().getTime(),
+      link: 'fe1204'
+    },
+    {
+      title: '这是一个测试的数据',
+      description: '测试'.repeat(60),
+      time: new Date().getTime(),
+      link: 'fe1208'
+    }];
     return (
       <SearchLayout>
-        <div></div>
+        <p className={styles.timeTaking}>找到约 66,900,000 条结果（用时 0.33 秒）</p>
+        <div className={styles.searchList}>
+          {
+            searchResult.map((item, index) => {
+              const link = `/search/${item.link}`;
+              return (
+                <div
+                  key={`${index}`}
+                  className={styles.searchList_item}>
+                  <h3 className={styles.title}>
+                    <Link to={link}>{item.title}</Link>
+                  </h3>
+                  <cite>{link}</cite>
+                  <p className={styles.desc}>
+                    <span className={styles.desc_time}>{`${getSearchDate(item.time)} - `}</span>
+                    {item.description}
+                  </p>
+                </div>
+              );
+            })
+          }
+        </div>
       </SearchLayout>
     );
   }

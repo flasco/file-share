@@ -3,6 +3,12 @@
   display: flex;
   align-items: center;
   height: 100%;
+  margin-left: -40px;
+
+  img {
+    height: 40px;
+    margin-right: 10px;
+  }
 }
 
 // 屏蔽用户的拖拉选择

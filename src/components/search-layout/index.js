@@ -19,7 +19,7 @@ class SearchLayout extends React.Component {
       <Layout>
         <Header className={styles.layoutHeader}>
           <div className={styles.logo}>
-            <img src={assets.logo2} alt={'file share'} style={{ height: 40, marginRight: 8 }} />
+            <img src={assets.logo2} alt={'file share'} />
             <Input.Search
               placeholder="input search text"
               onSearch={value => console.log(value)}

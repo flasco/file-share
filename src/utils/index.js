@@ -11,3 +11,8 @@ export function getUrlQuery(variable) {
   }
   return '';
 }
+
+export function getSearchDate(time) {
+  const date = typeof time === 'object' ? time : new Date(time);
+  return `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`;
+}

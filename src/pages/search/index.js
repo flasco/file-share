@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from 'dva/router';
 
+import { getUrlQuery } from 'utils';
 import SearchLayout from 'components/search-layout';
-import { getUrlQuery, getSearchDate } from 'utils';
+import SearchItem from './components/search-item';
 
 import styles from './index.module.scss';
 
@@ -35,18 +35,12 @@ class Search extends React.Component {
             searchResult.map((item, index) => {
               const link = `/search/${item.link}`;
               return (
-                <div
+                <SearchItem
+                  link={link}
                   key={`${index}`}
-                  className={styles.searchList_item}>
-                  <h3 className={styles.title}>
-                    <Link to={link}>{item.title}</Link>
-                  </h3>
-                  <cite>{link}</cite>
-                  <p className={styles.desc}>
-                    <span className={styles.desc_time}>{`${getSearchDate(item.time)} - `}</span>
-                    {item.description}
-                  </p>
-                </div>
+                  time={item.time}
+                  title={item.title}
+                  description={item.description} />
               );
             })
           }

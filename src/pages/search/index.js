@@ -1,15 +1,24 @@
 import React from 'react';
+import { connect } from 'dva';
 
 import { getUrlQuery } from 'utils';
 import SearchLayout from 'components/search-layout';
-import SearchItem from './components/search-item';
-
-import styles from './index.module.scss';
+import SearchList from './components/search-list';
 
 class Search extends React.Component {
   constructor(props) {
     super(props);
     this.keyword = getUrlQuery('q');
+  }
+
+  onSearch = (keyword) => {
+    console.log(keyword);
+    this.props.dispatch({
+      type: 'router/jmp',
+      payload: {
+        path: `/search?q=${keyword}`
+      }
+    });
   }
 
   render() {
@@ -23,31 +32,21 @@ class Search extends React.Component {
     },
     {
       title: '这是一个测试的数据',
-      description: '测试'.repeat(60),
+      description: '测试'.repeat(20),
       time: new Date().getTime(),
       link: 'fe1208'
     }];
     return (
-      <SearchLayout>
-        <p className={styles.timeTaking}>找到约 66,900,000 条结果（用时 0.33 秒）</p>
-        <div className={styles.searchList}>
-          {
-            searchResult.map((item, index) => {
-              const link = `/search/${item.link}`;
-              return (
-                <SearchItem
-                  link={link}
-                  key={`${index}`}
-                  time={item.time}
-                  title={item.title}
-                  description={item.description} />
-              );
-            })
-          }
-        </div>
+      <SearchLayout
+        onSearch={this.onSearch}
+        keyword={this.keyword}>
+        <SearchList
+          list={searchResult} />
       </SearchLayout>
     );
   }
 }
 
-export default Search;
+function select() { return {}; }
+
+export default connect(select)(Search);

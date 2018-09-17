@@ -30,13 +30,7 @@
     word-wrap: break-word;
     margin-bottom: 0;
     text-align: justify;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    /* autoprefixer: off */
-    -webkit-box-orient: vertical;
-    /* autoprefixer: on */
+
     &_time {
       color: #808080;
     }

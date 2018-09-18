@@ -17,21 +17,22 @@ class SearchLayout extends React.Component {
 
   static defaultProps = {
     keyword: '',
-    onSearch: () => { }
+    onSearch: () => { },
+    showSearch: true
   }
   render() {
-    const { keyword, onSearch, children } = this.props;
+    const { keyword, onSearch, children, showSearch } = this.props;
     return (
       <Layout>
         <Header className={styles.layoutHeader}>
-          <div className={styles.logo}>
+          <div className={`${styles.logo} ${showSearch ? styles.logo_search : false}`}>
             <img src={assets.logo2} alt={'file share'} />
-            <Input.Search
+            {showSearch ? <Input.Search
               defaultValue={keyword}
               placeholder="input search text"
               onSearch={onSearch}
               style={{ width: 440 }}
-            />
+            /> : <span>File Share</span>}
           </div>
           <UserBoard />
         </Header>

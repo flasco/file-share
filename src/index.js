@@ -9,7 +9,7 @@ const app = dva({
 
 app.use(createLoading());
 
-app.model(require('./models/app').default);
+app.model(require('./models/user').default);
 
 app.router(require('./pages/router').default);
 

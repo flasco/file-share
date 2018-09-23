@@ -7,7 +7,7 @@ import ConfigForm from './components/config-form';
 
 class UserCenter extends React.Component {
   state = {
-    isLoading: false,
+    isLoading: true,
     data: {
       id: '1001',
       accountName: 'akari',
@@ -18,6 +18,14 @@ class UserCenter extends React.Component {
 
   submitForm = (data) => {
     console.log(data);
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({
+        isLoading: false
+      });
+    }, 1000);
   }
 
   render() {

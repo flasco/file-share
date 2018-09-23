@@ -1,6 +1,7 @@
 import React from 'react';
 import { Router, Route, Switch } from 'dva/router';
 import Loadable from 'react-loadable';
+import { Spin } from 'antd';
 // import { dynamic } from 'dva/dynamic';
 
 import home from './home';
@@ -16,7 +17,7 @@ const menuGlobal = [
     component: Loadable({
       loader: () => import(/* webpackChunkName: "search" */ './search'),
       loading() {
-        return <div>loading...</div>;
+        return <Spin spinning />;
       }
     })
   },
@@ -25,7 +26,7 @@ const menuGlobal = [
     component: Loadable({
       loader: () => import(/* webpackChunkName: "userCenter" */ './user-center'),
       loading() {
-        return <div>loading...</div>;
+        return <Spin spinning />;
       }
     })
   }

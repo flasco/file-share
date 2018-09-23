@@ -26,6 +26,8 @@ module.exports = function override(config, env) {
           'react',
           'react-dom',
           'dva',
+          'dva-loading',
+          'react-loadable',
           'axios'
         ]
       },

@@ -1,5 +1,7 @@
 import React from 'react';
 import { Layout, Input } from 'antd';
+import { connect } from 'dva';
+
 import assets from 'assets';
 
 import UserBoard from '../user-board';
@@ -8,7 +10,7 @@ import styles from './index.module.scss';
 
 const { Header, Content, Footer } = Layout;
 
-class SearchLayout extends React.Component {
+class SearchLayout extends React.PureComponent {
   constructor(props) {
     super(props);
     const tempHeight = document.body.clientHeight - 134;
@@ -20,12 +22,24 @@ class SearchLayout extends React.Component {
     onSearch: () => { },
     showSearch: true
   }
+
+  jmpIndex = () => {
+    !this.props.showSearch && this.props.dispatch({
+      type: 'router/jmp',
+      payload: {
+        path: '/'
+      }
+    });
+  }
+
   render() {
     const { keyword, onSearch, children, showSearch } = this.props;
     return (
       <Layout>
         <Header className={styles.layoutHeader}>
-          <div className={`${styles.logo} ${showSearch ? styles.logo_search : false}`}>
+          <div
+            onClick={this.jmpIndex}
+            className={`${styles.logo} ${showSearch ? styles.logo_search : styles.logo_no_search}`}>
             <img src={assets.logo2} alt={'file share'} />
             {showSearch ? <Input.Search
               defaultValue={keyword}
@@ -47,4 +61,8 @@ class SearchLayout extends React.Component {
   }
 }
 
-export default SearchLayout;
+function select() {
+  return {};
+}
+
+export default connect(select)(SearchLayout);

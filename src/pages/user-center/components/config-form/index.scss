@@ -1,0 +1,78 @@
+.confForm-form {
+  width: 820px;
+  margin: 0 auto;
+
+  label,
+  span,
+  input,
+  textarea {
+    font-size: 14px !important;
+  }
+
+  &-first {
+    display: flex;
+    margin-left: 25%;
+  }
+}
+
+.confForm-img {
+  position: absolute;
+  top: 50%;
+  right: 27.67%;
+  transform: translateY(-50%);
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  z-index: 450;
+}
+
+.confForm-header {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, .1);
+
+  &-a {
+    background: rgba(0, 0, 0, .6);
+    color: #fff;
+    font-size: 12px;
+    line-height: 72px;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    opacity: 0;
+    transition: opacity .2s;
+
+    &:hover {
+      opacity: 1;
+      color: #fff;
+    }
+  }
+}
+
+.ant-form-item-control {
+  margin-left: 10px;
+}
+
+.avatar {
+  width: 150px;
+  height: 150px;
+
+  &-uploader {
+    display: block;
+    border: 1px dashed #d9d9d9;
+    border-radius: 6px;
+    cursor: pointer;
+
+    &-trigger {
+      display: table-cell;
+      vertical-align: middle;
+      font-size: 28px;
+      color: #999;
+    }
+  }
+}

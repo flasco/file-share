@@ -3,6 +3,7 @@ const path = require('path');
 const rewireCssModules = require('react-app-rewire-css-modules');
 const rewireLess = require('react-app-rewire-less');
 const createRewireDll = require('react-app-rewire-dll');
+let BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = function override(config, env) {
   // do stuff with the webpack config...
@@ -33,6 +34,8 @@ module.exports = function override(config, env) {
       filename: '[name].dll.js'
     })(config, env);
   }
+
+  config.plugins.push(new BundleAnalyzerPlugin());
 
   config.resolve = {
     alias: {

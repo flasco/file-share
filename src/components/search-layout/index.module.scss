@@ -3,11 +3,23 @@
   display: flex;
   align-items: center;
   height: 100%;
-  margin-left: -40px;
+
+  &_search {
+    margin-left: -40px;
+  }
+
+  &_no_search {
+    cursor: pointer;
+  }
 
   img {
     height: 40px;
     margin-right: 10px;
+  }
+
+  span {
+    color: #fff;
+    font-size: 16px;
   }
 }
 

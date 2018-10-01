@@ -31,16 +31,15 @@ class UserCenter extends React.Component {
   render() {
     const { isLoading, data } = this.state;
     return (
-      <SearchLayout showSearch={false}>
-        <div style={{ background: '#fff', maxWidth: 1000, margin: '0 auto', marginTop: 30, paddingTop: 30, borderRadius: 6 }}>
-          <h2 style={{ textAlign: 'center' }}>个人中心</h2>
-          <Spin spinning={isLoading}>
-            <ConfigForm
-              data={data}
-              submit={this.submitForm} />
-          </Spin>
-        </div>
-
+      <SearchLayout
+        withWhiteBoard
+        showSearch={false}>
+        <h2 style={{ textAlign: 'center' }}>个人中心</h2>
+        <Spin spinning={isLoading}>
+          <ConfigForm
+            data={data}
+            submit={this.submitForm} />
+        </Spin>
       </SearchLayout>
     );
   }

@@ -6,6 +6,13 @@ import { Spin } from 'antd';
 
 import home from './home';
 
+export const searchPreload = Loadable({
+  loader: () => import(/* webpackChunkName: "search" */ './search'),
+  loading() {
+    return <Spin spinning />;
+  }
+});
+
 // 使用按需加载会导致css不会生成，被装在chunk.js里面
 const menuGlobal = [
   {
@@ -14,17 +21,21 @@ const menuGlobal = [
   },
   {
     path: '/search',
+    component: searchPreload
+  },
+  {
+    path: '/user/center',
     component: Loadable({
-      loader: () => import(/* webpackChunkName: "search" */ './search'),
+      loader: () => import(/* webpackChunkName: "userCenter" */ './user-center'),
       loading() {
         return <Spin spinning />;
       }
     })
   },
   {
-    path: '/user/center',
+    path: '/user/file',
     component: Loadable({
-      loader: () => import(/* webpackChunkName: "userCenter" */ './user-center'),
+      loader: () => import(/* webpackChunkName: "fileManage" */ './file-manage'),
       loading() {
         return <Spin spinning />;
       }

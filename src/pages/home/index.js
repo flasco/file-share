@@ -3,12 +3,20 @@ import { Input, Button } from 'antd';
 import { connect } from 'dva';
 import assets from 'assets';
 import MainLayout from 'components/main-layout';
+import { searchPreload } from '../router';
 
 import './index.scss';
 
 class Home extends React.Component {
-  state = {
-    input: ''
+  constructor(props) {
+    super(props);
+
+    // 预加载
+    searchPreload.preload();
+
+    this.state = {
+      input: ''
+    };
   }
   onChangeInput = (e) => {
     this.setState({ input: e.target.value });

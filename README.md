@@ -11,7 +11,8 @@ a webApp powered by react &amp; dva &amp; antd
 - [x] 完善首页
 - [x] 完善搜索结果页
 - [x] 完善个人中心页
-- [ ] 完善文件管理页 [next target]
+- [x] 完善文件管理页
+- [ ] 完善文件编辑页 [next target]
 - [ ] 完善搜索结果详情页 [important]
 - [ ] 接口联调
 

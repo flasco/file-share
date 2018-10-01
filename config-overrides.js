@@ -3,10 +3,9 @@ const path = require('path');
 const rewireCssModules = require('react-app-rewire-css-modules');
 const rewireLess = require('react-app-rewire-antd-less');
 const createRewireDll = require('react-app-rewire-dll');
-let BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = function override(config, env) {
-  // do stuff with the webpack config...
   config = injectBabelPlugin(
     ['import', { libraryName: 'antd', libraryDirectory: 'es', style: true }],
     config,
@@ -15,6 +14,7 @@ module.exports = function override(config, env) {
   // 支持scss的css modules
   config = rewireCssModules(config, env);
 
+  // antd less 覆写
   config = rewireLess.withLoaderOptions({
     modifyVars: { '@primary-color': '#32AFB4' },
     javascriptEnabled: true,
@@ -35,9 +35,10 @@ module.exports = function override(config, env) {
       path: './static/js',
       filename: '[name].dll.js'
     })(config, env);
-  }
 
-  config.plugins.push(new BundleAnalyzerPlugin());
+    // 如果是prod的话就执行
+    config.plugins.push(new BundleAnalyzerPlugin());
+  }
 
   config.resolve = {
     alias: {

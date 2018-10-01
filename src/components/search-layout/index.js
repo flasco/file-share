@@ -33,7 +33,7 @@ class SearchLayout extends React.PureComponent {
   }
 
   render() {
-    const { keyword, onSearch, children, showSearch } = this.props;
+    const { keyword, onSearch, children, showSearch, withWhiteBoard } = this.props;
     return (
       <Layout>
         <Header className={styles.layoutHeader}>
@@ -51,7 +51,13 @@ class SearchLayout extends React.PureComponent {
           <UserBoard />
         </Header>
         <Content style={{ padding: '0 50px', minHeight: `${this.minHeight}px` }}>
-          {children}
+          {
+            withWhiteBoard ?
+              <div style={{ background: '#fff', maxWidth: 1000, margin: '0 auto', marginTop: 30, borderRadius: 6, padding: '30px 30px 0' }}>
+                {children}
+              </div> :
+              children
+          }
         </Content>
         <Footer style={{ textAlign: 'center' }}>
           Ant Design ©2018 Created by flasco

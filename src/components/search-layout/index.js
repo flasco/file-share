@@ -53,7 +53,7 @@ class SearchLayout extends React.PureComponent {
         <Content style={{ padding: '0 50px', minHeight: `${this.minHeight}px` }}>
           {
             withWhiteBoard ?
-              <div style={{ background: '#fff', maxWidth: 1000, margin: '0 auto', marginTop: 30, borderRadius: 6, padding: '30px 30px 0' }}>
+              <div style={{ background: '#fff', maxWidth: 1000, margin: '0 auto', marginTop: 30, borderRadius: 6, padding: '30px' }}>
                 {children}
               </div> :
               children

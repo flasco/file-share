@@ -10,6 +10,9 @@ export default {
     * jmp({ payload }, { put }) {
       const { path = '/', params = {} } = payload;
       yield put(routerRedux.push(path, params));
+    },
+    * goBack({ payload }, { put }) {
+      yield put(routerRedux.goBack());
     }
   },
 };

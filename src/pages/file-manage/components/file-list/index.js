@@ -54,12 +54,12 @@ class FileList extends React.Component {
     return null;
   }
 
-  renderOperationLine = (deleteFileByIds, downloadFileByIds) => {
+  renderOperationLine = (deleteFileByIds, downloadFileByIds, createFile) => {
     return (
       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 12 }}>
         <div style={{ height: '33px' }}>
           <Button.Group>
-            <Button type="primary">上传</Button>
+            <Button type="primary" onClick={() => createFile()}>上传</Button>
           </Button.Group>
           <Button.Group className={this.state.isSelected ? styles.operationContainer : styles.operationContainerHide}>
             <Button onClick={() => downloadFileByIds(this.selectedRowKeys)}>下载</Button>
@@ -127,10 +127,10 @@ class FileList extends React.Component {
   };
 
   render() {
-    const { dataset, deleteFileByIds, isLoading, downloadFileByIds } = this.props;
+    const { dataset, deleteFileByIds, isLoading, downloadFileByIds, createFile } = this.props;
     return (
       <React.Fragment>
-        {this.renderOperationLine(deleteFileByIds, downloadFileByIds)}
+        {this.renderOperationLine(deleteFileByIds, downloadFileByIds, createFile)}
         <Table
           onChange={this.handleTableChange}
           loading={isLoading}

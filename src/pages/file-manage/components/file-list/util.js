@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'dva/router';
 import { formatDate } from 'utils';
 
 export function getColumns() {
@@ -9,7 +10,7 @@ export function getColumns() {
       key: 'name',
       width: '48%',
       sorter: true,
-      render: (text, rowData) => <a href={`/file/${rowData.id}`}>{text}</a>,
+      render: (text, rowData) => <Link to={`/file/${rowData.id}`}>{text}</Link>,
     }, {
       title: '大小',
       width: '16%',
@@ -29,7 +30,7 @@ export function getColumns() {
       key: 'edit',
       render: (text, rowData) => {
         return (
-          <a href={`/file/edit/${rowData.id}`}>编辑</a>
+          <Link to={`/file/edit/${rowData.id}`}>编辑</Link>
         );
       },
     }

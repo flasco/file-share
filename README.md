@@ -13,7 +13,7 @@ a webApp powered by react &amp; dva &amp; antd
 - [x] 完善个人中心页
 - [x] 完善文件管理页
 - [x] 完善文件编辑页
-- [ ] 完善搜索结果详情页 [important]
+- [x] 完善搜索结果详情页
 - [ ] 接口联调
 
 ## dependencies

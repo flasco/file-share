@@ -33,6 +33,13 @@ export const fileEditPreload = Loadable({
   }
 });
 
+export const searchResultPreload = Loadable({
+  loader: () => import(/* webpackChunkName: "searchResult"  */ './search-result'),
+  loading() {
+    return <Spin spinning />;
+  }
+});
+
 // 使用按需加载会导致css不会生成，被装在chunk.js里面
 const routerMap = [
   {
@@ -58,6 +65,10 @@ const routerMap = [
   {
     path: '/file/create',
     component: fileEditPreload
+  },
+  {
+    path: '/file/:id',
+    component: searchResultPreload
   },
 ];
 

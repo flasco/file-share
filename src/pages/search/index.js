@@ -5,10 +5,15 @@ import { getUrlQuery } from 'utils';
 import SearchLayout from 'components/search-layout';
 import SearchList from './components/search-list';
 
+import { searchResultPreload } from '../router';
+
 class Search extends React.Component {
   constructor(props) {
     super(props);
     this.keyword = getUrlQuery('q');
+
+    // 预加载
+    searchResultPreload.preload();
   }
 
   onSearch = (keyword) => {

@@ -1,4 +1,4 @@
-import { post } from '../utils/request';
+import { get, post } from '../utils/request';
 import { serverIp } from '../config';
 
 
@@ -35,4 +35,17 @@ export async function login({ accountName, password }) {
     password,
   });
   return result;
+}
+
+export async function loginCheck() {
+  const url = `${serverIp}/sessions/check`;
+  return get(url);
+}
+
+export async function userUpdate(gender, introduce) {
+  const url = `${serverIp}/users/update`;
+  return post(url, {
+    gender,
+    introduce
+  });
 }

@@ -1,7 +1,10 @@
 import React from 'react';
-import { Spin } from 'antd';
+import { Spin, message } from 'antd';
+import { connect } from 'dva';
 
 import SearchLayout from 'components/search-layout';
+
+import { userUpdate } from '../../api';
 
 import ConfigForm from './components/config-form';
 
@@ -16,8 +19,13 @@ class UserCenter extends React.Component {
     }
   }
 
-  submitForm = (data) => {
-    console.log(data);
+  submitForm = async (values) => {
+    const { code } = await userUpdate(values.gender, values.description);
+    if (code === 'A0000') {
+      message.success('修改成功');
+    } else {
+      message.error('修改失败');
+    }
   }
 
   componentDidMount() {
@@ -29,7 +37,23 @@ class UserCenter extends React.Component {
   }
 
   render() {
-    const { isLoading, data } = this.state;
+    const { isLoading } = this.state;
+    const {
+      isInit,
+      id,
+      accountName,
+      gender,
+      description
+    } = this.props;
+    const data = {
+      id,
+      accountName,
+      gender,
+      description
+    };
+    if (isInit) {
+      return null;
+    }
     return (
       <SearchLayout
         withWhiteBoard
@@ -45,4 +69,14 @@ class UserCenter extends React.Component {
   }
 }
 
-export default UserCenter;
+function select(state) {
+  return {
+    isInit: state.user.isInit,
+    id: state.user.id,
+    accountName: state.user.accountName,
+    gender: state.user.gender,
+    description: state.user.description
+  };
+}
+
+export default connect(select)(UserCenter);

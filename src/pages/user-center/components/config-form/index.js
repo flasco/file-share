@@ -101,10 +101,10 @@ class ConfForm extends React.Component {
           {getFieldDecorator('gender', {
             initialValue: `${data.gender}`,
           })(
-            <Radio.Group >
-              <Radio.Button value="1">男</Radio.Button>
-              <Radio.Button value="2">女</Radio.Button>
-              <Radio.Button value="3">保密</Radio.Button>
+            <Radio.Group>
+              <Radio.Button value="男">男</Radio.Button>
+              <Radio.Button value="女">女</Radio.Button>
+              <Radio.Button value="保密">保密</Radio.Button>
             </Radio.Group>
           )}
         </FormItem>

@@ -41,13 +41,14 @@ class UserBoard extends React.Component {
       password: values.password,
     });
 
-    data = data.data;
-
     data && this.props.dispatch({
       type: 'user/login',
       payload: {
         isLogin: true,
         accountName: data.userName,
+        gender: data.gender,
+        id: data.id,
+        description: data.introduce,
         points: data.points
       },
     });
@@ -63,13 +64,14 @@ class UserBoard extends React.Component {
       confirmPassword: values.confirm,
     });
 
-    data = data.data;
-
     data && this.props.dispatch({
       type: 'user/register',
       payload: {
         isLogin: true,
         accountName: data.userName,
+        id: data.id,
+        gender: data.gender,
+        description: data.introduce,
         points: data.points
       },
     });

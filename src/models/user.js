@@ -4,7 +4,8 @@ import akari from '../assets/akari.jpg';
 const initialState = {
   isLogin: false,
   avatar: akari,
-  accountName: '执墨'
+  points: 0,
+  accountName: '测试'
 };
 
 export default {

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'dva';
 import { Avatar } from 'antd';
 
-import { sleep } from 'utils';
+import { login, register } from '../../api';
 
 import LoginPopup from './components/login-popup';
 import UserPanel from './components/user-panel';
@@ -15,14 +15,14 @@ class UserBoard extends React.Component {
     panelShow: false,
     type: 'login' // login - 登录，register - 注册
   }
-  login = () => {
+  doLogin = () => {
     this.setState({
       visible: true,
       type: 'login'
     });
   }
 
-  register = () => {
+  doRegister = () => {
     this.setState({
       visible: true,
       type: 'register'
@@ -36,31 +36,45 @@ class UserBoard extends React.Component {
   }
 
   loginSubmit = async (values) => {
-    console.log(values);
-    await sleep(1000);
-    const res = true;
-    res && this.props.dispatch({
+    let { data } = await login({
+      accountName: values.accountName,
+      password: values.password,
+    });
+
+    data = data.data;
+
+    data && this.props.dispatch({
       type: 'user/login',
       payload: {
-        isLogin: true
+        isLogin: true,
+        accountName: data.userName,
+        points: data.points
       },
     });
 
-    return res;
+    return !!data;
   }
 
   registerSubmit = async (values) => {
-    console.log(values);
-    await sleep(1000);
-    const res = true;
-    res && this.props.dispatch({
+    let { data } = await register({
+      email: values.email,
+      accountName: values.accountName,
+      password: values.password,
+      confirmPassword: values.confirm,
+    });
+
+    data = data.data;
+
+    data && this.props.dispatch({
       type: 'user/register',
       payload: {
-        isLogin: true
+        isLogin: true,
+        accountName: data.userName,
+        points: data.points
       },
     });
 
-    return res;
+    return !!data;
   }
 
   userQuit = () => {
@@ -73,8 +87,8 @@ class UserBoard extends React.Component {
     return (
       <React.Fragment>
         <ul className={'user-board-container'}>
-          <li onClick={this.login}>登录</li>
-          <li onClick={this.register}>注册</li>
+          <li onClick={this.doLogin}>登录</li>
+          <li onClick={this.doRegister}>注册</li>
         </ul>
         <LoginPopup
           windowType={this.state.type}
@@ -115,6 +129,7 @@ class UserBoard extends React.Component {
         <UserPanel
           accountName={this.props.accountName}
           avatar={this.props.avatar}
+          points={this.props.points}
           userQuit={this.userQuit}
           needShow={this.state.panelShow}
           onMouseEnter={this.onMouseEnter}
@@ -137,7 +152,8 @@ function select(state) {
   return {
     isLogin: state.user.isLogin,
     avatar: state.user.avatar,
-    accountName: state.user.accountName
+    accountName: state.user.accountName,
+    points: state.user.points,
     // registerLoading: state.loading.effects['user/register'],
   };
 }

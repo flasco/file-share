@@ -10,7 +10,7 @@ class RegisterForm extends React.Component {
 
   static getDerivedStateFromProps(nextProps) {
     if (nextProps.isError) {
-      this.props.setError(false);
+      nextProps.setError(false);
       return {
         btnLoading: false
       };

@@ -4,7 +4,7 @@ import './index.scss';
 
 class UserPanel extends React.Component {
   render() {
-    const { needShow, onMouseLeave, onMouseEnter, avatar, accountName, userQuit } = this.props;
+    const { needShow, onMouseLeave, onMouseEnter, avatar, accountName, userQuit, points } = this.props;
     return (
       <div
         className="userboard-container"
@@ -18,9 +18,9 @@ class UserPanel extends React.Component {
 
           <div className="userboard-first-right" style={{ float: 'left', lineHeight: 'normal' }}>
             <p style={{ marginTop: 14, }}>
-              <span className="userboard-name">{accountName}</span><span style={{ fontSize: 12, color: '#93999f', marginLeft: 8 }}>{`Lv.${5}`}</span>
+              <span className="userboard-name">{accountName}</span>
             </p>
-            <p style={{ marginTop: 14, fontSize: 12, color: '#93999f' }}>{`积分: ${400}`}</p>
+            <p style={{ marginTop: 14, fontSize: 12, color: '#93999f' }}>{`积分: ${points}`}</p>
           </div>
           <ul className="userboard-items">
             <li><Link key="info" to={{ pathname: '/user/center' }}>个人中心</Link></li>

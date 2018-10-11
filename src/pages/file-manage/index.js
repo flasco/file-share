@@ -1,8 +1,12 @@
 import React from 'react';
 import { connect } from 'dva';
+import { message } from 'antd';
 
 import SearchLayout from 'components/search-layout';
-import { sleep } from 'utils';
+
+import { getOwnFileList, downloadFilesByIds } from '../../api/file';
+
+import { INIT_SEARCH_OPTION } from './components/file-list/constants';
 
 import FileList from './components/file-list';
 
@@ -13,19 +17,7 @@ class FileManage extends React.Component {
     super(props);
     this.state = {
       isLoading: false,
-      dataset: [{
-        id: 'fe6472',
-        name: 'ceshi.mp4',
-        type: 'mp4',
-        changeAt: '201231230',
-        size: '45.18 MB'
-      }, {
-        id: 'fe6473',
-        name: 'ceshi2.mp4',
-        type: 'mp4',
-        changeAt: '201231230',
-        size: '45.18 MB'
-      }],
+      dataset: [],
       total: 11,
     };
 
@@ -52,20 +44,32 @@ class FileManage extends React.Component {
 
   downloadFileByIds = (ids) => {
     // 调用接口下载
-    console.log(ids);
+    downloadFilesByIds(ids);
   }
 
-  fetchList = async (req) => {
-    console.log(req);
+  fetchList = (req) => {
     this.setState({
       isLoading: true
     });
-    await sleep(1000);
-    this.setState({
-      isLoading: false,
-      total: 100
-      // dataset: [...this.state.dataset, ...this.state.dataset]
+    getOwnFileList(req).then(({ data }) => {
+      if (data == null) {
+        message.error('没有登录');
+        this.props.dispatch({
+          type: 'router/jmp',
+          payload: '/'
+        });
+      } else {
+        this.setState({
+          isLoading: false,
+          total: data.total,
+          dataset: data.list
+        });
+      }
     });
+  }
+
+  componentDidMount() {
+    this.fetchList(INIT_SEARCH_OPTION);
   }
 
   render() {

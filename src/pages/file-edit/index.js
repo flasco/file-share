@@ -1,9 +1,10 @@
 import React from 'react';
-import { Spin } from 'antd';
+import { Spin, message } from 'antd';
 import { connect } from 'dva';
 
 import SearchLayout from 'components/search-layout';
 // import { sleep } from 'utils';
+import { uploadFile } from '../../api/file';
 
 import FileEditField from './field';
 
@@ -18,12 +19,25 @@ class FileManage extends React.Component {
     };
   }
 
-  onSubmit = (values) => {
-    console.log(values);
+  onSubmit = async (values) => {
     if (this.feId) {
       // edit
     } else {
       // create
+      let formData = new FormData();
+      formData.append('file', values.file.originFileObj);
+      formData.append('fileName', values.fileName);
+      formData.append('introduce', values.introduce);
+      formData.append('point', values.point);
+      const { code } = await uploadFile(formData);
+      if (code === 'A0000') {
+        message.success('上传成功');
+        this.props.dispatch({
+          type: 'router/goBack'
+        });
+      } else {
+        message.error('上传失败');
+      }
     }
   }
 

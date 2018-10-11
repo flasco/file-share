@@ -6,8 +6,8 @@ export function getColumns() {
   return [
     {
       title: '文件名',
-      dataIndex: 'name',
-      key: 'name',
+      dataIndex: 'fileName',
+      key: 'fileName',
       width: '48%',
       sorter: true,
       render: (text, rowData) => <Link to={`/file/${rowData.id}`}>{text}</Link>,
@@ -17,12 +17,13 @@ export function getColumns() {
       sorter: true,
       dataIndex: 'size',
       key: 'size',
+      render: text => <span>{formatSize(text)}</span>,
     }, {
       title: '修改时间',
-      dataIndex: 'changeAt',
+      dataIndex: 'updateTime',
       sorter: true,
       width: '20%',
-      key: 'changeAt',
+      key: 'updateTime',
       render: text => <span>{formatDate(text)}</span>,
     }, {
       title: '操作',
@@ -35,4 +36,14 @@ export function getColumns() {
       },
     }
   ];
+}
+
+function formatSize(bytes) {
+  let kb = bytes / 1024;
+  const mb = kb / 1024;
+  if (mb >= 1) {
+    return `${mb.toFixed(2)} MB`;
+  }
+  if (kb < 1) kb = 1;
+  return `${kb.toFixed(2)} KB`;
 }

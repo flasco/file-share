@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'dva';
 import { Avatar } from 'antd';
 
-import { login, register } from '../../api';
+import { login, register } from '../../api/user';
 
 import LoginPopup from './components/login-popup';
 import UserPanel from './components/user-panel';

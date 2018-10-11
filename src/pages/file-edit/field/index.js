@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Upload, message, Button, Input, Radio } from 'antd';
+import { Form, Upload, Button, Input, Radio } from 'antd';
 
 
 const FormItem = Form.Item;
@@ -15,10 +15,6 @@ class FileEdit extends Component {
       if (!err) {
         // 开始上传文件
         this.props.onSubmit(values);
-        message.success('test');
-        // const formData = new FormData();
-        // formData.append('file', values.file[0]);
-        // console.log(formData.get('file'));
       }
     });
   }
@@ -42,7 +38,13 @@ class FileEdit extends Component {
     if (Array.isArray(e)) {
       return e;
     }
-    return e && e.fileList;
+    return e && e.fileList[0];
+  }
+
+  isLt500M = (rule, value, callback) => {
+    const isLt500M = value.size / 1024 / 1024 <= 500;
+    const msg = isLt500M ? '' : '文件大小不能超过500MB';
+    callback(msg);
   }
 
   renderUpload = (getFieldDecorator, file, isCreate = true) => {
@@ -52,14 +54,14 @@ class FileEdit extends Component {
           wrapperCol={{ span: 14, offset: 6 }}>
           {getFieldDecorator('file', {
             getValueFromEvent: this.normFile,
-            rules: [{ required: true, message: '请选择需要上传的文件' }],
+            rules: [{ required: true, message: '请选择需要上传的文件', validator: this.isLt500M }],
           })(
             <Upload
               name="file"
               action="url"
               withCredentials
               beforeUpload={() => false}>
-              <Button disabled={file && file.length > 0}>
+              <Button disabled={file != null}>
                 选择文件
               </Button>
             </Upload>
@@ -94,7 +96,7 @@ class FileEdit extends Component {
         <FormItem
           {...this.formItemLayout}
           label="简介">
-          {getFieldDecorator('description', {
+          {getFieldDecorator('introduce', {
             initialValue: data.description,
             rules: [{ required: true, message: '请填写文件简介', max: 120 }],
           })(
@@ -104,7 +106,7 @@ class FileEdit extends Component {
         <FormItem
           {...this.formItemLayout}
           label="所需积分">
-          {getFieldDecorator('points', {
+          {getFieldDecorator('point', {
             initialValue: data.points,
             rules: [{ required: true, message: '请选择所需积分' }],
           })(

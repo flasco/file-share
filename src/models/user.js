@@ -1,7 +1,7 @@
 // import { sleep } from 'utils';
 import akari from '../assets/akari.jpg';
 
-import { loginCheck } from '../api';
+import { loginCheck } from '../api/user';
 
 const initialState = {
   isLogin: false,

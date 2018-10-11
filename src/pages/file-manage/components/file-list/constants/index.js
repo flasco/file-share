@@ -1,7 +1,13 @@
 export const INIT_SEARCH_OPTION = {
   keyword: '',
-  p: 1,
+  page: 1,
   pageSize: 10,
-  ascend: null,
-  dscend: null,
+  attr: null,
+  order: 0,
+};
+
+export const ATTR_MAP = {
+  fileName: 'file_name',
+  size: 'size',
+  updateTime: 'update_time',
 };

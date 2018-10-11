@@ -3,7 +3,7 @@ import { Table, Button, Input } from 'antd';
 import PropTypes from 'prop-types';
 
 import { getColumns } from './util';
-import { INIT_SEARCH_OPTION } from './constants';
+import { INIT_SEARCH_OPTION, ATTR_MAP } from './constants';
 
 import styles from './index.module.scss';
 
@@ -91,13 +91,8 @@ class FileList extends React.Component {
     });
 
     if (sorter.order) {
-      if (sorter.order === 'ascend') {
-        this.ascend = sorter.columnKey;
-        this.descend = null;
-      } else if (sorter.order === 'descend') {
-        this.ascend = null;
-        this.descend = sorter.columnKey;
-      }
+      this.attr = ATTR_MAP[sorter.columnKey];
+      this.order = sorter.order === 'ascend' ? 1 : 0;
     }
     this.fetchData(false, pagination.current);
   }
@@ -108,10 +103,10 @@ class FileList extends React.Component {
         keyword: this.keyword
       }) : {
         keyword: this.keyword || '',
-        p: current,
+        page: current,
         pageSize: 10,
-        ascend: this.ascend,
-        descend: this.descend,
+        attr: this.attr,
+        order: this.order,
       };
 
     this.props.fetchList(req);
@@ -138,7 +133,7 @@ class FileList extends React.Component {
           pagination={this.state.pagination}
           dataSource={dataset}
           columns={getColumns()}
-          rowKey="id" />
+          rowKey="fileId" />
       </React.Fragment>
     );
   }

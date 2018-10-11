@@ -2,38 +2,18 @@ import React, { Component } from 'react';
 
 import { Pagination, Spin } from 'antd';
 
-import { sleep } from 'utils';
-
 import SearchItem from '../search-item';
 
 import styles from './index.module.scss';
 
 export default class SearchList extends Component {
-  state = {
-    current: 1,
-    total: 40,
-    isLoading: false,
-  }
-
-  onPaginationChange = async (pageNumber, pageSize) => {
-    this.setState({
-      isLoading: true
-    });
-    await sleep(1000);
-    this.setState({
-      isLoading: false,
-    });
-    console.log(pageNumber);
-    console.log(pageSize);
-  }
-
   render() {
     return (
       <div className={styles.searchContainer}>
         <Spin
           tip={'加载中'}
           delay={200}
-          spinning={this.state.isLoading}
+          spinning={this.props.isLoading}
           wrapperClassName={styles.searchSpin}>
           <div className={styles.searchList}>
             {
@@ -52,9 +32,9 @@ export default class SearchList extends Component {
           </div>
         </Spin>
         <Pagination
-          defaultCurrent={this.state.current}
-          total={this.state.total}
-          onChange={this.onPaginationChange} />
+          defaultCurrent={this.props.current}
+          total={this.props.total}
+          onChange={this.props.onPaginationChange} />
       </div>
     );
   }

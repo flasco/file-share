@@ -4,7 +4,7 @@ import { connect } from 'dva';
 
 import SearchLayout from 'components/search-layout';
 
-import { userUpdate } from '../../api';
+import { userUpdate } from '../../api/user';
 
 import ConfigForm from './components/config-form';
 
@@ -51,7 +51,7 @@ class UserCenter extends React.Component {
       gender,
       description
     };
-    if (isInit) {
+    if (!isInit) {
       return null;
     }
     return (

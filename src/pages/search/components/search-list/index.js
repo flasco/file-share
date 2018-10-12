@@ -18,14 +18,14 @@ export default class SearchList extends Component {
           <div className={styles.searchList}>
             {
               this.props.list.map((item, index) => {
-                const link = `/file/${item.link}`;
+                const link = `/file/${item.fileId}`;
                 return (
                   <SearchItem
                     link={link}
                     key={`${index}`}
-                    time={item.time}
-                    title={item.title}
-                    description={item.description} />
+                    time={item.updateTime}
+                    title={item.fileName}
+                    description={item.introduce} />
                 );
               })
             }

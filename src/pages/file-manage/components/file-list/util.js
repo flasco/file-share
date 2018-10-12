@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'dva/router';
+import { Popover } from 'antd';
 import { formatDate } from 'utils';
 
 export function getColumns() {
@@ -10,7 +11,12 @@ export function getColumns() {
       key: 'fileName',
       width: '48%',
       sorter: true,
-      render: (text, rowData) => <Link to={`/file/${rowData.id}`}>{text}</Link>,
+      render: (text, rowData) => (
+        <Popover content={<span>{text}</span>}>
+          <Link to={`/file/${rowData.fileId}`}>{splitStr(text)}</Link>
+        </Popover>
+
+      ),
     }, {
       title: '大小',
       width: '16%',
@@ -31,7 +37,7 @@ export function getColumns() {
       key: 'edit',
       render: (text, rowData) => {
         return (
-          <Link to={`/file/edit/${rowData.id}`}>编辑</Link>
+          <Link to={`/file/edit/${rowData.fileId}`}>编辑</Link>
         );
       },
     }
@@ -46,4 +52,11 @@ function formatSize(bytes) {
   }
   if (kb < 1) kb = 1;
   return `${kb.toFixed(2)} KB`;
+}
+
+function splitStr(str, num = 20) {
+  if (typeof str === 'string') {
+    return str.length > num ? `${str.substring(0, num)}...` : str;
+  }
+  return str;
 }

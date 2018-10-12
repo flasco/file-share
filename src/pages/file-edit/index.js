@@ -4,7 +4,7 @@ import { connect } from 'dva';
 
 import SearchLayout from 'components/search-layout';
 // import { sleep } from 'utils';
-import { uploadFile } from '../../api/file';
+import { uploadFile, getFileInfo, editFile } from '../../api/file';
 
 import FileEditField from './field';
 
@@ -15,23 +15,45 @@ class FileManage extends React.Component {
     this.feId = props.match.params.id;
 
     this.state = {
-      data: null
+      data: null,
+      uploading: false,
     };
   }
 
   onSubmit = async (values) => {
     if (this.feId) {
       // edit
+      const { code } = await editFile(this.feId, {
+        fileName: values.fileName,
+        introduce: values.introduce,
+        point: values.point
+      });
+      if (code !== 'A0000') {
+        message.error('更新失败');
+      } else {
+        message.success('更新成功');
+        this.props.dispatch({
+          type: 'router/jmp',
+          payload: {
+            path: '/user/file'
+          }
+        });
+      }
     } else {
       // create
+      this.setState({ uploading: true });
       let formData = new FormData();
       formData.append('file', values.file.originFileObj);
       formData.append('fileName', values.fileName);
       formData.append('introduce', values.introduce);
       formData.append('point', values.point);
       const { code } = await uploadFile(formData);
+      this.setState({ uploading: false });
       if (code === 'A0000') {
         message.success('上传成功');
+        this.props.dispatch({
+          type: 'user/appInit'
+        });
         this.props.dispatch({
           type: 'router/goBack'
         });
@@ -43,12 +65,14 @@ class FileManage extends React.Component {
 
   onFetch = (feId) => {
     if (feId != null) {
-      this.setState({
-        data: {
-          fileName: `${feId}`,
-          description: '测试简介',
-          points: '4'
-        }
+      getFileInfo(feId).then(({ data }) => {
+        this.setState({
+          data: {
+            fileName: data.fileName,
+            description: data.introduce,
+            points: `${data.point}`
+          }
+        });
       });
     }
   }
@@ -64,11 +88,12 @@ class FileManage extends React.Component {
   }
 
   render() {
+    const { data, uploading } = this.state;
     return (
       <SearchLayout
         withWhiteBoard
         showSearch={false}>
-        <Spin spinning={this.feId != null && this.state.data == null}>
+        <Spin spinning={(this.feId != null && data == null) || uploading}>
           <FileEditField
             onSubmit={this.onSubmit}
             goBack={this.goBack}

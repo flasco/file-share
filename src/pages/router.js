@@ -1,42 +1,43 @@
 import React from 'react';
 import { Router, Route, Switch } from 'dva/router';
 import Loadable from 'react-loadable';
-import { Spin } from 'antd';
+
+import LoadingPage from 'components/loading-page';
 
 import home from './home';
 
 export const searchPreload = Loadable({
   loader: () => import(/* webpackChunkName: "search" */ './search'),
   loading() {
-    return <Spin spinning />;
+    return <LoadingPage />;
   }
 });
 
 export const userPreLoad = Loadable({
   loader: () => import(/* webpackChunkName: "userCenter" */ './user-center'),
   loading() {
-    return <Spin spinning />;
+    return <LoadingPage />;
   }
 });
 
 export const fileManagePreload = Loadable({
   loader: () => import(/* webpackChunkName: "fileManage" */ './file-manage'),
   loading() {
-    return <Spin spinning />;
+    return <LoadingPage />;
   }
 });
 
 export const fileEditPreload = Loadable({
   loader: () => import(/* webpackChunkName: "fileEdit"  */ './file-edit'),
   loading() {
-    return <Spin spinning />;
+    return <LoadingPage />;
   }
 });
 
 export const searchResultPreload = Loadable({
   loader: () => import(/* webpackChunkName: "searchResult"  */ './search-result'),
   loading() {
-    return <Spin spinning />;
+    return <LoadingPage />;
   }
 });
 

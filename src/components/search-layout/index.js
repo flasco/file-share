@@ -32,8 +32,12 @@ class SearchLayout extends React.PureComponent {
     });
   }
 
+  onPreSearch = (keyword) => {
+    this.props.onSearch(keyword);
+  }
+
   render() {
-    const { keyword, onSearch, children, showSearch, withWhiteBoard } = this.props;
+    const { keyword, children, showSearch, withWhiteBoard } = this.props;
     return (
       <Layout>
         <Header className={styles.layoutHeader}>
@@ -44,7 +48,7 @@ class SearchLayout extends React.PureComponent {
             {showSearch ? <Input.Search
               defaultValue={keyword}
               placeholder="input search text"
-              onSearch={onSearch}
+              onSearch={this.onPreSearch}
               style={{ width: 440 }}
             /> : <span>File Share</span>}
           </div>

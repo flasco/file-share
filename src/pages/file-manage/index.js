@@ -4,7 +4,7 @@ import { message } from 'antd';
 
 import SearchLayout from 'components/search-layout';
 
-import { getOwnFileList, downloadFilesByIds } from '../../api/file';
+import { getOwnFileList, downloadFilesByIds, deleteFileByIds } from '../../api/file';
 
 import { INIT_SEARCH_OPTION } from './components/file-list/constants';
 
@@ -35,10 +35,13 @@ class FileManage extends React.Component {
   }
 
   deleteFileByIds = (ids) => {
-    const dataset = this.state.dataset.filter(item => ids.indexOf(item.id) < 0);
-
-    this.setState({
-      dataset
+    deleteFileByIds(ids).then(({ code }) => {
+      if (code !== 'A0000') {
+        message.error('删除失败');
+      } else {
+        message.success('删除成功');
+        this.fetchList(INIT_SEARCH_OPTION);
+      }
     });
   }
 

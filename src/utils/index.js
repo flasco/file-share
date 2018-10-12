@@ -7,7 +7,7 @@ export function getUrlQuery(variable) {
   const vars = query.split('&');
   for (let i = 0, j = vars.length; i < j; i++) {
     const pair = vars[i].split('=');
-    if (pair[0] === variable) { return pair[1]; }
+    if (pair[0] === variable) { return decodeURIComponent(pair[1]); }
   }
   return '';
 }

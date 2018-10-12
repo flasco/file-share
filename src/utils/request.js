@@ -35,3 +35,8 @@ export async function postFile(url, formData) {
   });
   return data;
 }
+
+export async function del(url) {
+  const { data } = await axios.delete(url);
+  return data;
+}

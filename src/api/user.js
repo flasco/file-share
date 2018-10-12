@@ -18,7 +18,6 @@ export async function register({ accountName, password, confirmPassword, email }
     confirmPassword,
     email,
   });
-  console.log(result);
   return result;
 }
 

@@ -42,9 +42,12 @@ class FileEdit extends Component {
   }
 
   isLt500M = (rule, value, callback) => {
-    const isLt500M = value.size / 1024 / 1024 <= 500;
-    const msg = isLt500M ? '' : '文件大小不能超过500MB';
-    callback(msg);
+    if (value == null) {
+      callback('请选择要上传的文件');
+    } else {
+      const isLt500M = value.size / 1024 / 1024 <= 500;
+      isLt500M ? callback() : callback('文件大小不能超过500MB');
+    }
   }
 
   renderUpload = (getFieldDecorator, file, isCreate = true) => {
@@ -54,7 +57,7 @@ class FileEdit extends Component {
           wrapperCol={{ span: 14, offset: 6 }}>
           {getFieldDecorator('file', {
             getValueFromEvent: this.normFile,
-            rules: [{ required: true, message: '请选择需要上传的文件', validator: this.isLt500M }],
+            rules: [{ validator: this.isLt500M }],
           })(
             <Upload
               name="file"
@@ -111,10 +114,10 @@ class FileEdit extends Component {
             rules: [{ required: true, message: '请选择所需积分' }],
           })(
             <Radio.Group>
-              <Radio.Button value="1">3</Radio.Button>
-              <Radio.Button value="2">5</Radio.Button>
-              <Radio.Button value="3">7</Radio.Button>
-              <Radio.Button value="4">10</Radio.Button>
+              <Radio.Button value="3">3</Radio.Button>
+              <Radio.Button value="5">5</Radio.Button>
+              <Radio.Button value="7">7</Radio.Button>
+              <Radio.Button value="10">10</Radio.Button>
             </Radio.Group>
           )}
         </FormItem>

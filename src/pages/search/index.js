@@ -25,7 +25,6 @@ class Search extends React.Component {
   }
 
   onSearch = (keyword, page = 1, pageSize = 10) => {
-    console.log(keyword);
     searchFile(keyword, page, pageSize).then(({ data }) => {
       if (data == null) {
         message.error('获取信息失败');
@@ -33,7 +32,7 @@ class Search extends React.Component {
         this.setState({
           current: page,
           total: data.total,
-          dataset: data.list
+          searchResult: data.list
         });
       }
     }).catch((e) => {
@@ -43,6 +42,10 @@ class Search extends React.Component {
 
   onPaginationChange = (pageNumber, pageSize = 10) => {
     this.onSearch(this.keyword, pageNumber, pageSize);
+  }
+
+  componentDidMount() {
+    this.onSearch(this.keyword);
   }
 
   render() {

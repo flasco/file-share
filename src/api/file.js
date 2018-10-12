@@ -1,4 +1,4 @@
-import { get, post, postFile } from '../utils/request';
+import { get, post, postFile, del } from '../utils/request';
 import { serverIp } from '../config';
 
 export async function getOwnFileList(params) {
@@ -11,7 +11,27 @@ export async function searchFile(keyword, page, pageSize) {
   const url = `${serverIp}/files/search`;
 
   const result = await get(url, { keyword, page, pageSize });
-  console.log(result);
+  return result;
+}
+
+export async function getFilePreview(fieldId) {
+  const url = `${serverIp}/files/${fieldId}/preview`;
+
+  const result = await get(url);
+  return result;
+}
+
+export async function getFileUserInfo(fieldId) {
+  const url = `${serverIp}/files/${fieldId}/userInfo`;
+
+  const result = await get(url);
+  return result;
+}
+
+export async function getFileInfo(fieldId) {
+  const url = `${serverIp}/files/${fieldId}`;
+
+  const result = await get(url);
   return result;
 }
 
@@ -24,16 +44,13 @@ export async function uploadFile(formData) {
 export async function editFile(fileId, params) {
   const url = `${serverIp}/files/update/${fileId}`;
   const result = await post(url, params);
-  console.log(result);
   return result;
 }
 
-export async function deleteFile(ids) {
+export async function deleteFileByIds(ids) {
   const params = ids.join('&fileIds=');
-  const url = `${serverIp}/filelist?fileIds=${params}`;
-  const result = await get(url, {
-  });
-  console.log(result);
+  const url = `${serverIp}/files/delete?fileIds=${params}`;
+  const result = await del(url);
   return result;
 }
 
